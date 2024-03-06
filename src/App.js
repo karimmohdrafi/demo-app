@@ -1,10 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+
 
 function App() {
-  return (
-    <center><h1>Mohammad</h1></center>
-  );
+  var count = 0
+  return(
+    <>
+    <h1>Counter = {count}</h1>
+    <button onClick={update}>Change</button>
+    </>
+
+  )
+  function update(){
+    ++count;
+    console.log(count);
+  }
+  
+  
 }
 
 export default App;
