@@ -1,19 +1,44 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from "react";
+import ProductCard from "./Product"
+
+import './App.css'
+
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0);
+  var [products, updateProducts] = useState([])
 
-  function update() {
-    setCount(count + 1);
-    console.log(count);
+  useEffect(
+    () => {
+      getProducts()
+
+    }, []
+  )
+  async function getProducts() {
+    var res = await fetch("https://fakestoreapi.com/products")
+    let productlist = await res.json()
+
+    updateProducts(productlist)
+
+
   }
 
+
+
+  if (products.length == 0) {
+    return (<h1>Fetch data</h1>)
+  }
   return (
     <>
-      <h1>Counter = {count}</h1>
-      <button onClick={update}>Change</button>
-    </>
-  );
-}
+      <div className="product-list">
+        {
+          products.map((p) => <ProductCard {...p} key={p.id}></ProductCard>)
 
-export default App;
+        }
+      </div>
+    </>
+  )
+}
+export default App
