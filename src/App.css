@@ -20,6 +20,8 @@
 }
 .card button{
   background-color: lightseagreen;
-  border-radius: 7px;
+  border-radius: 5px;
+  padding: 0 10px 0 10px;
   cursor: pointer;
+
 }
